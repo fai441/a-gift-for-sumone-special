@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Gift for U</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #7b2cbf, #9d4edd, #48cae4, #ade8f4);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  @keyframes gradientBG {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+  }
+
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tooltip-container {
+    position: relative;
+    margin: 25px 0;
+  }
+
+  .my-image {
+    width: 280px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: block;
+    border-radius: 20px;
+  }
+
+  .rotate-left { transform: rotate(-10deg); }
+  .rotate-right { transform: rotate(8deg); }
+
+  .my-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(123,44,191,0.7);
+  }
+
+  .tooltip-text {
+    visibility: hidden;
+    width: 220px;  
+    background-color: rgba(123, 44, 191, 0.9);
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    padding: 12px 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip-container.left .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent rgba(123, 44, 191, 0.9) transparent transparent;
+  }
+
+  .tooltip-container.right .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(123, 44, 191, 0.9);
+  }
+
+  #center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 70px;
+  }
+
+  #text {
+    font-size: 36px;
+    margin-bottom: 30px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  #text.show { opacity: 1; }
+
+  button {
+    font-size: 26px;
+    padding: 18px 36px;
+    background-color: #7b2cbf;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+
+  button:hover { transform: scale(1.05); }
+  button:active { transform: scale(0.95); background-color: #6a1fb5; }
+
+  /* Pixel cats bigger and transparent */
+  .pixel-cat-container {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+  }
+
+  #pixel-cat-black, #pixel-cat-orange {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  #pixel-cat-black { background-image: url('pixelcatblack.png'); }
+  #pixel-cat-orange { background-image: url('pixelcatorange.png'); }
+
+  .cat-tooltip {
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(123, 44, 191, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .pixel-cat-container:hover .cat-tooltip {
+    opacity: 1;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="main-container">
+  <!-- Left column -->
+  <div class="column">
+    <div class="tooltip-container left">
+      <a href="https://comick.io/comic/tokyo-ghoul" target="_blank">
+        <img class="my-image rotate-left" src="tokyoghoul.png" alt="Tokyo Ghoul">
+      </a>
+      <div class="tooltip-text">I love u alot my love</div>
+    </div>
+    <div class="tooltip-container left">
+      <a href="https://readberserk.com" target="_blank">
+        <img class="my-image rotate-right" src="beserk.png" alt="Berserk">
+      </a>
+      <div class="tooltip-text">
+        fj when?<br>
+        (make sure to use an adblocker when ur gonna go read Berserk!!!)
+      </div>
+    </div>
+  </div>
+
+  <!-- Center text and button -->
+  <div id="center-container">
+    <div id="text">(click the button below)</div>
+    <button id="btn">💜 Click Me 💙</button>
+  </div>
+
+  <!-- Right column -->
+  <div class="column">
+    <div class="tooltip-container right">
+      <a href="https://www.roblox.com/games/4111023553/Deepwoken" target="_blank">
+        <img class="my-image rotate-right" src="deepwoken.png" alt="Deepwoken">
+      </a>
+      <div class="tooltip-text">ur mine and mine only</div>
+    </div>
+    <div class="tooltip-container right">
+      <a href="https://www.roblox.com/games/14067600077/TYPE-SOUL" target="_blank">
+        <img class="my-image rotate-left" src="typesoul.png" alt="Type Soul">
+      </a>
+      <div class="tooltip-text">what if i eat u</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pixel cats with tooltips -->
+<div class="pixel-cat-container" id="pixel-cat-black-container">
+  <div id="pixel-cat-black"></div>
+  <div class="cat-tooltip">Luna</div>
+</div>
+
+<div class="pixel-cat-container" id="pixel-cat-orange-container">
+  <div id="pixel-cat-orange"></div>
+  <div class="cat-tooltip">Foxy</div>
+</div>
+
+<script>
+  const messages = [
+    "I love you a lot!!! ❤️",
+    "I'm under your bed 👀",
+    "I can see on your bed 😳",
+    "Can I smell your toes? 👃👣",
+    "Make sure to eat! 🍽️"
+  ];
+
+  const btn = document.getElementById("btn");
+  const text = document.getElementById("text");
+
+  btn.addEventListener("click", () => {
+    btn.textContent = "Playing...";
+    text.textContent = "";
+    text.classList.remove('show');
+
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    let i = 0;
+    const interval = setInterval(() => {
+      text.textContent += msg[i];
+      i++;
+      if (i >= msg.length) {
+        clearInterval(interval);
+        text.classList.add('show');
+      }
+    }, 50);
+
+    setTimeout(() => { btn.textContent = "💜 Click Me 💙"; }, msg.length*50 + 500);
+  });
+
+  // Random movement for pixel cats
+  const blackCat = document.getElementById("pixel-cat-black-container");
+  const orangeCat = document.getElementById("pixel-cat-orange-container");
+
+  let cats = [
+    {el: blackCat, x: 100, y: 400, dx: 2, dy: 1.5},
+    {el: orangeCat, x: 800, y: 300, dx: -1.5, dy: 2}
+  ];
+
+  function moveCats() {
+    cats.forEach(cat => {
+      cat.x += cat.dx;
+      cat.y += cat.dy;
+
+      // Bounce off edges
+      if(cat.x < 0 || cat.x > window.innerWidth - 150) cat.dx *= -1;
+      if(cat.y < 0 || cat.y > window.innerHeight - 150) cat.dy *= -1;
+
+      cat.el.style.left = cat.x + "px";
+      cat.el.style.top = cat.y + "px";
+    });
+    requestAnimationFrame(moveCats);
+  }
+
+  moveCats();
+</script>
+
+</body>
+</html>
